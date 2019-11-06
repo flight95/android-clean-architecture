@@ -197,25 +197,27 @@ ReadRemote
 - Read from Remote only: It will be need error indicating network was not connected.
 
 ```kotlin
-fun <T : Any> Single<T>.bypass(function: (value: T) -> Unit): Single<T> =
-    map { data ->
-        function(data)
-        data
-    }
-
-fun readRemoteData(id: String): Single<Data> =
-    remote.readData(id)
-        .bypass{ cache.setData(it) } // Insert or update cache: call in success status.
+fun readRemoteData(id: String): Single<Data> = remote.readData(id)
 ```
 
 ReadDynamic: Read data that needs to be synchronized.
 - Read from Cache at first and Remote at second.
 
 ```kotlin
+fun <T : Any> Single<T>.bypass(function: (value: T) -> Unit): Single<T> =
+    map { data ->
+        function(data)
+        data
+    }
+    
+private fun readRemoteSyncData(id: String): Single<Data> =
+    remote.readData(id)
+        .bypass{ cache.setData(it) } // Insert or update cache: call in success status.
+        
 fun readDynamicData(id: String): Single<Data> =
     cache.readData(id)
-        .bypass { readRemoteData(id) } // Call in success status from cache.
-        .onErrorResumeNext { readRemoteData(id) } // Call in fail status from remote and cache.
+        .bypass { readRemoteSyncData(id) } // Call in success status from cache.
+        .onErrorResumeNext { readRemoteSyncData(id) } // Call in fail status from remote and cache.
 ```
 
 ReadStatic: Read data that should not be set once
@@ -224,7 +226,7 @@ ReadStatic: Read data that should not be set once
 ```kotlin
 fun readStaticData(id: String): Single<Data> =
     cache.readData(id)
-        .onErrorResumeNext { readRemoteData(id) } // Call in fail status.
+        .onErrorResumeNext { readRemoteSyncData(id) } // Call in fail status.
 ```
 
 Observe: Read frequently changing data.
