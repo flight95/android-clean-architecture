@@ -1,2 +1,8 @@
-include ':app'
-rootProject.name='android-clean-architecture'
+include ":boilerplate-application",
+        ":boilerplate-presenter",
+        ":library-domain",
+        ":library-data",
+        ":library-data-remote",
+        ":library-data-cache",
+        ":library-data-core",
+        ":library-core"

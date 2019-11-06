@@ -1,0 +1,24 @@
+def libraries = [:]
+
+def androidx = [:]
+
+def base = [:]
+base.core = "androidx.core:core-ktx:$versions.androidx.base.core"
+base.appcompat = "androidx.appcompat:appcompat:$versions.androidx.base.core"
+base.material = "com.google.android.material:material:$versions.androidx.base.material"
+base.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.androidx.base.constraintlayout"
+androidx.base = base
+
+libraries.androidx = androidx
+
+def test = [:]
+test.junit = "junit:junit:$versions.test.junit"
+
+def test_androidx = [:]
+test_androidx.junit = "androidx.test.ext:junit:$versions.test.androidx.junit"
+test_androidx.espresso = "androidx.test.espresso:espresso-core:$versions.test.androidx.espresso"
+test.androidx = test_androidx
+
+libraries.test = test
+
+ext.libraries = libraries
