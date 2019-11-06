@@ -1,0 +1,39 @@
+def versions = [:]
+
+def build = [:]
+build.tool = "29.0.2"
+build.gradle = "3.5.2"
+build.kotlin = "1.3.50"
+versions.build = build
+
+// https://developer.android.com/jetpack/androidx/versions/
+// - core
+// - constraintlayout
+// https://github.com/material-components/material-components-android/releases
+// - material
+def androidx = [:]
+
+def base = [:]
+base.core = "1.1.0"
+base.material = "1.2.0-alpha01" // https://material.io/develop/android/theming/dark/
+base.constraintlayout = "1.1.3"
+androidx.base = base
+
+versions.androidx = androidx
+
+// https://developer.android.com/jetpack/androidx/releases/test/
+// - test
+// - espresso
+// https://github.com/junit-team/junit4/releases
+// - junit
+def test = [:]
+test.junit = "4.12"
+
+def test_androidx = [:]
+test_androidx.junit = "1.1.1"
+test_androidx.espresso = "3.2.0"
+test.androidx = test_androidx
+
+versions.test = test
+
+ext.versions = versions

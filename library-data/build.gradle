@@ -1,0 +1,68 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion application.config.sdk.target
+    buildToolsVersion versions.build.tool
+
+    defaultConfig {
+        minSdkVersion application.config.sdk.min
+        targetSdkVersion application.config.sdk.target
+        versionCode application.config.version.code
+        versionName application.config.version.name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = ["src/main/kotlin"]
+        }
+        test {
+            java.srcDirs = ["src/test/kotlin"]
+        }
+        androidTest {
+            java.srcDirs = ["src/androidTest/kotlin"]
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility application.language.java
+        targetCompatibility application.language.java
+    }
+
+    kapt {
+        generateStubs = true
+    }
+}
+
+dependencies {
+    api project(":library-data-remote")
+    api project(":library-data-cache")
+    implementation application.language.kotlin
+
+    implementation libraries.androidx.base.core
+    implementation libraries.androidx.base.appcompat
+
+    testImplementation libraries.test.junit
+
+    androidTestImplementation libraries.test.androidx.junit
+    androidTestImplementation libraries.test.androidx.espresso
+}

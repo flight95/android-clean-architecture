@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/android-clean-architecture.iml" filepath="$PROJECT_DIR$/.idea/android-clean-architecture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boilerplate-application/boilerplate-application.iml" filepath="$PROJECT_DIR$/boilerplate-application/boilerplate-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/boilerplate-presenter/boilerplate-presenter.iml" filepath="$PROJECT_DIR$/boilerplate-presenter/boilerplate-presenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-core/library-core.iml" filepath="$PROJECT_DIR$/library-core/library-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-data/library-data.iml" filepath="$PROJECT_DIR$/library-data/library-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-data-cache/library-data-cache.iml" filepath="$PROJECT_DIR$/library-data-cache/library-data-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-data-core/library-data-core.iml" filepath="$PROJECT_DIR$/library-data-core/library-data-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-data-remote/library-data-remote.iml" filepath="$PROJECT_DIR$/library-data-remote/library-data-remote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-domain/library-domain.iml" filepath="$PROJECT_DIR$/library-domain/library-domain.iml" />
+    </modules>
+  </component>
+</project>
