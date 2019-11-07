@@ -1,0 +1,8 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- https://material.io/components/snackbars/#specs -->
+    <dimen name="transient_bottom_layout_height">172dp</dimen>
+</resources>

@@ -58,6 +58,10 @@ dependencies {
 
     implementation libraries.androidx.base.core
     implementation libraries.androidx.base.appcompat
+    implementation libraries.androidx.base.material
+
+    implementation libraries.androidx.navigation.fragment
+    implementation libraries.androidx.navigation.ui
 
     testImplementation libraries.test.junit
 

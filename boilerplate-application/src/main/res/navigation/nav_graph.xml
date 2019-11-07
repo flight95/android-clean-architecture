@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/homeFragment">
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="pe.richard.architecture.boilerplate.view.home.HomeFragment"
+            android:label="@string/title_home"
+            tools:layout="@layout/fragment_home">
+        <argument
+                android:name="@string/argument_bottom_navigation_behavior_enable"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        <argument
+                android:name="@string/argument_floating_action_button_enable"
+                android:defaultValue="true"
+                app:argType="boolean" />
+    </fragment>
+    <fragment
+            android:id="@+id/messageFragment"
+            android:name="pe.richard.architecture.boilerplate.view.message.MessageFragment"
+            android:label="@string/title_message"
+            tools:layout="@layout/fragment_message">
+        <argument
+                android:name="@string/argument_bottom_navigation_enable"
+                android:defaultValue="true"
+                app:argType="boolean" />
+        <argument
+                android:name="@string/argument_bottom_navigation_behavior_enable"
+                android:defaultValue="true"
+                app:argType="boolean" />
+    </fragment>
+    <fragment
+            android:id="@+id/notificationFragment"
+            android:name="pe.richard.architecture.boilerplate.view.notification.NotificationFragment"
+            android:label="@string/title_notification"
+            tools:layout="@layout/fragment_notification">
+        <argument
+                android:name="@string/argument_bottom_navigation_enable"
+                android:defaultValue="true"
+                app:argType="boolean" />
+        <argument
+                android:name="@string/argument_bottom_navigation_behavior_enable"
+                android:defaultValue="false"
+                app:argType="boolean" />
+    </fragment>
+    <fragment
+            android:id="@+id/profileFragment"
+            android:name="pe.richard.architecture.boilerplate.view.profile.ProfileFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/fragment_profile">
+        <argument
+                android:name="@string/argument_app_bar_enable"
+                android:defaultValue="true"
+                app:argType="boolean" />
+        <argument
+                android:name="@string/argument_floating_action_button_enable"
+                android:defaultValue="true"
+                app:argType="boolean" />
+    </fragment>
+</navigation>

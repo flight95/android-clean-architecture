@@ -62,6 +62,9 @@ dependencies {
     implementation libraries.androidx.base.material
     implementation libraries.androidx.base.constraintlayout
 
+    implementation libraries.androidx.navigation.fragment
+    implementation libraries.androidx.navigation.ui
+
     testImplementation libraries.test.junit
 
     androidTestImplementation libraries.test.androidx.junit
