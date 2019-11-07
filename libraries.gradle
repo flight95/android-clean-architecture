@@ -16,6 +16,14 @@ navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.and
 navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.androidx.navigation"
 androidx.navigation = navigation
 
+def dagger2 = [:]
+dagger2.core = "com.google.dagger:dagger:$versions.dagger2"
+dagger2.android = "com.google.dagger:dagger-android:$versions.dagger2"
+dagger2.androidx = "com.google.dagger:dagger-android-support:$versions.dagger2"
+dagger2.compiler = "com.google.dagger:dagger-compiler:$versions.dagger2"
+dagger2.processor = "com.google.dagger:dagger-android-processor:$versions.dagger2"
+libraries.dagger2 = dagger2
+
 def test = [:]
 test.junit = "junit:junit:$versions.test.junit"
 

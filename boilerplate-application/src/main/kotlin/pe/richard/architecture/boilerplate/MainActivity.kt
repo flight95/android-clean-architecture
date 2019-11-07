@@ -1,6 +1,7 @@
 package pe.richard.architecture.boilerplate
 
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
@@ -9,9 +10,19 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
-import pe.richard.architecture.core.view.navigation.NavActivity
+import pe.richard.architecture.boilerplate.dagger.activity.ActivityComponent
+import pe.richard.architecture.boilerplate.dagger.activity.test.IActivityTest
+import pe.richard.architecture.boilerplate.dagger.android.DaggerActivity
+import pe.richard.architecture.boilerplate.dagger.application.test.IApplicationTest
+import javax.inject.Inject
 
-class MainActivity : NavActivity() {
+class MainActivity : DaggerActivity() {
+
+    @Inject
+    lateinit var applicationTest: IApplicationTest
+
+    @Inject
+    lateinit var activityTest: IActivityTest
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +42,24 @@ class MainActivity : NavActivity() {
     }
 
     private fun initActivity() {
+        applicationTest.test()
+        activityTest.test()
+
         initBottomNavigationView()
         initToolbar()
         initTransientBottomLayout()
     }
+
+    //region DaggerActivity
+
+    override fun inject(component: ActivityComponent) {
+        Log.e("MainActivity", "==================================================")
+        Log.e("MainActivity", "application: $application")
+        Log.e("MainActivity", "activity: $this")
+        component.inject(this)
+    }
+
+    //endregion
 
     //region NavActivity
 

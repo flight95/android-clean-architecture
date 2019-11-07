@@ -65,6 +65,12 @@ dependencies {
     implementation libraries.androidx.navigation.fragment
     implementation libraries.androidx.navigation.ui
 
+    implementation libraries.dagger2.core
+    implementation libraries.dagger2.android
+    implementation libraries.dagger2.androidx
+    kapt libraries.dagger2.compiler
+    kapt libraries.dagger2.processor
+
     testImplementation libraries.test.junit
 
     androidTestImplementation libraries.test.androidx.junit
