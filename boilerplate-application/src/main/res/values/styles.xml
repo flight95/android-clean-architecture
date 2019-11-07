@@ -1,11 +1,30 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+    <!-- Typographic styles -->
+    <!-- https://material.io/develop/android/theming/typography/ -->
+    <style name="style_text_headline1" parent="TextAppearance.MaterialComponents.Headline1" />
+    <style name="style_text_headline2" parent="TextAppearance.MaterialComponents.Headline2" />
+    <style name="style_text_headline3" parent="TextAppearance.MaterialComponents.Headline3" />
+    <style name="style_text_headline4" parent="TextAppearance.MaterialComponents.Headline4" />
+    <style name="style_text_headline5" parent="TextAppearance.MaterialComponents.Headline5" />
+    <style name="style_text_headline6" parent="TextAppearance.MaterialComponents.Headline6" />
+    <style name="style_text_subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1" />
+    <style name="style_text_subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2" />
+    <style name="style_text_body1" parent="TextAppearance.MaterialComponents.Body1" />
+    <style name="style_text_body2" parent="TextAppearance.MaterialComponents.Body2" />
+    <style name="style_text_caption" parent="TextAppearance.MaterialComponents.Caption" />
+    <style name="style_text_button" parent="TextAppearance.MaterialComponents.Button" />
+    <style name="style_text_overline" parent="TextAppearance.MaterialComponents.Overline" />
 
+    <!-- Shape styles -->
+    <!-- https://material.io/develop/android/theming/shape/ -->
+    <style name="style_shape_small" parent="ShapeAppearance.MaterialComponents.SmallComponent" />
+    <style name="style_shape_medium" parent="ShapeAppearance.MaterialComponents.MediumComponent" />
+    <style name="style_shape_large" parent="ShapeAppearance.MaterialComponents.LargeComponent" />
+
+    <!-- Custom typographic styles -->
+    <style name="Style.Toolbar.Title.Collapsed" parent="style_text_headline6" />
+    <style name="Style.Toolbar.Title.Expanded" parent="style_text_headline6">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
 </resources>

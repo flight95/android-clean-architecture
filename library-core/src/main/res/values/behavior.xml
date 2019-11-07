@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_bar_layout_behavior" translatable="false">pe.richard.architecture.core.view.behavior.AppBarLayoutBehavior</string>
+    <string name="bottom_view_behavior" translatable="false">pe.richard.architecture.core.view.behavior.BottomViewBehavior</string>
+</resources>

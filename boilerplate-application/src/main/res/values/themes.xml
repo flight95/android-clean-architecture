@@ -1,0 +1,54 @@
+<resources>
+    <style name="Theme.App" parent="Theme.MaterialComponents.Light">
+
+        <!-- AppBarLayout attributes -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+
+        <!-- Brand colors attributes -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="colorOnSecondary">@color/color_on_secondary</item>
+
+        <!-- Neutral colors attributes -->
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="colorOnError">@color/color_on_error</item>
+        <item name="scrimBackground">@color/color_scrim</item>
+
+        <!-- Typographic styles attributes -->
+        <item name="textAppearanceHeadline1">@style/style_text_headline1</item>
+        <item name="textAppearanceHeadline2">@style/style_text_headline2</item>
+        <item name="textAppearanceHeadline3">@style/style_text_headline3</item>
+        <item name="textAppearanceHeadline4">@style/style_text_headline4</item>
+        <item name="textAppearanceHeadline5">@style/style_text_headline5</item>
+        <item name="textAppearanceHeadline6">@style/style_text_headline6</item>
+        <item name="textAppearanceSubtitle1">@style/style_text_subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/style_text_subtitle2</item>
+        <item name="textAppearanceBody1">@style/style_text_body1</item>
+        <item name="textAppearanceBody2">@style/style_text_body2</item>
+        <item name="textAppearanceCaption">@style/style_text_caption</item>
+        <item name="textAppearanceButton">@style/style_text_button</item>
+        <item name="textAppearanceOverline">@style/style_text_overline</item>
+
+        <!-- Shape styles attributes -->
+        <item name="shapeAppearanceSmallComponent">@style/style_shape_small</item>
+        <item name="shapeAppearanceMediumComponent">@style/style_shape_medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/style_shape_large</item>
+    </style>
+
+    <style name="Theme.App.AppBarLayout" parent="ThemeOverlay.MaterialComponents.Toolbar.Surface">
+        <item name="colorSurface">@color/color_primary</item>
+        <item name="colorOnSurface">@color/color_primary_variant</item>
+    </style>
+</resources>

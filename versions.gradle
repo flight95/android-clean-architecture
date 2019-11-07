@@ -9,9 +9,11 @@ versions.build = build
 // https://developer.android.com/jetpack/androidx/versions/
 // - core
 // - constraintlayout
+// - navigation
 // https://github.com/material-components/material-components-android/releases
 // - material
 def androidx = [:]
+androidx.navigation = "2.1.0-rc01"
 
 def base = [:]
 base.core = "1.1.0"

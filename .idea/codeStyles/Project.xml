@@ -1,7 +1,13 @@
 <component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
+    <option name="RIGHT_MARGIN" value="128" />
     <AndroidXmlCodeStyleSettings>
       <option name="ARRANGEMENT_SETTINGS_MIGRATED_TO_191" value="true" />
+      <option name="VALUE_RESOURCE_FILE_SETTINGS">
+        <value>
+          <option name="INSERT_LINE_BREAKS_AROUND_STYLE" value="false" />
+        </value>
+      </option>
     </AndroidXmlCodeStyleSettings>
     <JetCodeStyleSettings>
       <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />

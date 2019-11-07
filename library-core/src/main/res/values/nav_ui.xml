@@ -1,0 +1,8 @@
+<resources>
+    <string name="argument_popup" translatable="false">argument_popup</string>
+    <string name="argument_prev_destination_id" translatable="false">argument_prev_destination_id</string>
+    <string name="argument_app_bar_enable" translatable="false">argument_app_bar_enable</string>
+    <string name="argument_bottom_navigation_enable" translatable="false">argument_bottom_navigation_enable</string>
+    <string name="argument_bottom_navigation_behavior_enable" translatable="false">argument_bottom_navigation_behavior_enable</string>
+    <string name="argument_floating_action_button_enable" translatable="false">argument_floating_action_button_enable</string>
+</resources>

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!-- https://material.io/develop/android/theming/color/ -->
+
+    <!-- Light theme brand colors -->
+    <color name="color_primary">#00bcd4</color>
+    <color name="color_primary_dark">#008ba3</color>
+    <color name="color_primary_variant">#008ba3</color>
+    <color name="color_on_primary">#f5f5f5</color>
+    <color name="color_secondary">#bcaaa4</color>
+    <color name="color_secondary_variant">#8c7b75</color>
+    <color name="color_on_secondary">#1b1b1b</color>
+
+    <!-- Light theme neutral colors -->
+    <color name="color_background">#f5f5f5</color>
+    <color name="color_on_background">#1b1b1b</color>
+    <color name="color_surface">#f5f5f5</color>
+    <color name="color_on_surface">#1b1b1b</color>
+    <color name="color_error">#9a0007</color>
+    <color name="color_on_error">#f5f5f5</color>
+    <color name="color_scrim">@color/mtrl_scrim_color</color> <!-- 32% opacity black -->
 </resources>

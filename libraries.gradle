@@ -11,6 +11,11 @@ androidx.base = base
 
 libraries.androidx = androidx
 
+def navigation = [:]
+navigation.fragment = "androidx.navigation:navigation-fragment-ktx:$versions.androidx.navigation"
+navigation.ui = "androidx.navigation:navigation-ui-ktx:$versions.androidx.navigation"
+androidx.navigation = navigation
+
 def test = [:]
 test.junit = "junit:junit:$versions.test.junit"
 
