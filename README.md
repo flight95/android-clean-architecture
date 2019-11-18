@@ -90,7 +90,8 @@
 
 ## Logic and Functions naming
 
-### CRUD and monitoring value changed.
+### Create, update and delete.
+> When you are offline, you can also allow data changes so that you can sync when it changes to online. However, because it is too complicated, it is recommended to change the data only while online.
 
 Create or Insert
 - [Completable](https://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html) is default.
@@ -114,6 +115,7 @@ fun updateData(data: Data): Single<Data> {...}
 ```
 
 Set
+> It is mainly used to synchronize remote data locally.
 - [Completable](https://reactivex.io/RxJava/javadoc/io/reactivex/Completable.html) is default.
 - [Single](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html) with passed object from parameter will be useful.
 - Set creates it if there is no value, and updates it if it exists.
@@ -123,13 +125,16 @@ fun setData(data: Data): Completable {...}
 fun setData(data: Data): Single<Data> {...}
 ```
 
-Read or Select
+### Read or monitoring value changed.
+> Depending on the nature of data, you can fetch data by combining multiple DataSources. 
+
+Get
 - [Maybe](https://reactivex.io/RxJava/javadoc/io/reactivex/Maybe.html) is default: If UI will be updated in only not null status, it will be useful.
 - [Single](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html) will need error indicating null status: If UI will be updated in null or not null status, it will be useful.
 
 ```kotlin
-fun readData(data: Data): Maybe<Data> {...}
-fun readData(data: Data): Single<Data> {...} // with DataEmptyError.
+fun getData(data: Data): Maybe<Data> {...}
+fun getData(data: Data): Single<Data> {...} // with DataEmptyError.
 ```
 
 Observe: Monitoring value changed
@@ -139,103 +144,75 @@ Observe: Monitoring value changed
 fun observeData(data: Data): Flowable<Data> {...}
 ```
 
-### Create or Update in Cache and Remote, and sync both.
+### The nature of data.
 
-- Create or Update at Cache in status that is needed sync.
-- Sync Remote and update status.
-- Need batch process in application loading.
-- If read that do not sync data to Remote when network connected, throw sync error and show alert for user.
-
-Sync conflict
-- Exist updated user and updated timestamp data each row at remote.
-- If updated user was same, check updated timestamp.
-- If updated user was another user, check updated timestamp. And show that information.
+Remote
+> Data that should not be cached.
 
 ```kotlin
-fun createData(id: String): Single<Data> {
-    val data = Data(id, createdAt = Calendar.getInstance().time).apply {
-        state = State.Cache
-        updater = Auth.id
-        updatedAt = createdAt
-    }
-    val single = cache.createData(data)
-    syncData()
-    return single
-}
-
-fun updateData(data: Data): Single<Data> {
-    val fixed = data.apply {
-        state = State.Cache
-        updater = Auth.id
-        updatedAt = Calendar.getInstance().time
-    }
-    val single = cache.updateData(fixed)
-    syncData()
-    return single
-}
-
-fun syncData() {
-    val collection: Collection<Data> = getCachedData()
-    for (data in collection) {
-        addDisposable(remote.setData(data) // Check Sync conflict.
-            .subscribe(
-                {
-                    addDisposable(cache.updateData(data.apply { state = State.Sync })
-                        .subscribe({...}, {...})
-                    )
-                },
-                {...})
-        )
-    }
-}
-```
-
-### Read or monitoring in Cache and Remote, and sync both.
-
-ReadRemote
-- Read data that should not be cached
-- Read from Remote only: It will be need error indicating network was not connected.
-
-```kotlin
-fun readRemoteData(id: String): Single<Data> = remote.readData(id)
-```
-
-ReadDynamic: Read data that needs to be synchronized.
-- Read from Cache at first and Remote at second.
-
-```kotlin
-fun <T : Any> Single<T>.bypass(function: (value: T) -> Unit): Single<T> =
-    map { data ->
-        function(data)
-        data
-    }
+fun getRemoteData(id: String): Single<Data> =
+    remote.getData(id)
     
-private fun readRemoteSyncData(id: String): Single<Data> =
-    remote.readData(id)
-        .bypass{ cache.setData(it) } // Insert or update cache: call in success status.
-        
-fun readDynamicData(id: String): Single<Data> =
-    cache.readData(id)
-        .bypass { readRemoteSyncData(id) } // Call in success status from cache.
-        .onErrorResumeNext { readRemoteSyncData(id) } // Call in fail status from remote and cache.
+fun observeRemoteData(id: String): Flowable<Data> =
+    remote.observeData(id)
 ```
 
-ReadStatic: Read data that should not be set once
-- Read from Cache at first and Remote at second only once.
+Cache
+> Synchronization is implemented separately. Data just care about the cache.
 
 ```kotlin
-fun readStaticData(id: String): Single<Data> =
-    cache.readData(id)
-        .onErrorResumeNext { readRemoteSyncData(id) } // Call in fail status.
+fun getCacheData(id: String): Single<Data> =
+    cache.getData(id)
+    
+fun observeCacheData(id: String): Flowable<Data> =
+    cache.observeData(id)
 ```
 
-Observe: Read frequently changing data.
-- Monitor value changed in Cache, and update cache from Remote.
+Sync
+> Get uncached data from remote, and cache it.
 
 ```kotlin
-fun observeData(id: String): Flowable<Data> =
-    cache.observeData(id) // Observe from Room.
-        .bypass { remote.observeData(id) } // Observe from remote, and update cache.
+fun getSyncData(id: String): Single<Data> =
+    remote.getData(id)
+        .flatMap { data ->
+            cache.setData(data) // retun Completable
+                .toSingleDefault(data) // return Single from remote.
+                .onErrorReturn { data } // ignore error.
+        }
+    
+fun observeSyncData(id: String): Flowable<Data> =
+    remote.observeData(id)
+        .flatMap { data ->
+            cache.setData(data) // retun Completable
+                .toSingleDefault(data) // return Single from remote.
+                .onErrorReturn { data } // ignore error.
+                .toFlowable()
+            }
+```
+
+Static
+> Once created, the data never changes.
+
+```kotlin
+fun getStaticData(id: String): Single<Data> =
+    cache.getData(id)
+        .onErrorResumeNext(getSyncData(id))
+```
+
+Dynamic
+> Cacheable but frequently changed data.
+
+```kotlin
+fun observeDynamicData(id: String): Flowable<Data> =
+    getStaticData(id)
+        .flatMapPublisher {
+            Single.just(it).run {
+                when(it.from) {
+                    is From.Cache -> concatWith(getSyncData(id))
+                    is From.Remote -> toFlowable()
+                }
+            }
+        }
 ```
 
 ## Android Navigation Architecture and Material Theme
