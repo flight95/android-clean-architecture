@@ -4,6 +4,7 @@ application.id = "pe.richard.architecture.boilerplate"
 def build = [:]
 build.gradle = "com.android.tools.build:gradle:$versions.build.gradle"
 build.kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.build.kotlin"
+build.google = "com.google.gms:google-services:$versions.build.google"
 application.build = build
 
 def config = [:]

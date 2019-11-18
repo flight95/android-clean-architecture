@@ -2,9 +2,9 @@ package pe.richard.architecture.boilerplate.dagger.android
 
 import android.content.Context
 import pe.richard.architecture.boilerplate.dagger.view.ViewComponent
-import pe.richard.architecture.core.view.navigation.NavFragment
+import pe.richard.architecture.boilerplate.view.NavGraphFragment
 
-abstract class DaggerFragment : NavFragment() {
+abstract class DaggerFragment : NavGraphFragment() {
 
     override fun onAttach(context: Context) {
         inject(getComponent())

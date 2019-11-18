@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath application.build.gradle
         classpath application.build.kotlin
+        classpath application.build.google
     }
 }
 

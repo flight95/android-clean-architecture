@@ -2,47 +2,45 @@ package pe.richard.architecture.boilerplate.view.home
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import pe.richard.architecture.boilerplate.R
-import pe.richard.architecture.boilerplate.dagger.activity.test.IActivityTest
 import pe.richard.architecture.boilerplate.dagger.android.DaggerFragment
-import pe.richard.architecture.boilerplate.dagger.application.test.IApplicationTest
 import pe.richard.architecture.boilerplate.dagger.view.ViewComponent
-import pe.richard.architecture.boilerplate.dagger.view.test.IViewTest
+import pe.richard.architecture.boilerplate.presenter.view.home.HomePresenter
+import pe.richard.architecture.core.lifecycle.extensions.observe
 import javax.inject.Inject
 
 class HomeFragment : DaggerFragment() {
 
     @Inject
-    lateinit var applicationTest: IApplicationTest
+    lateinit var presenter: HomePresenter
 
-    @Inject
-    lateinit var activityTest: IActivityTest
+    override fun getRootViewId(): Int = R.layout.fragment_home
 
-    @Inject
-    lateinit var viewTest: IViewTest
+    override fun observeLiveData(owner: LifecycleOwner) {
+        with(presenter) {
+            observeError(this@HomeFragment) {
+                Log.e("HomeFragment", "error: $it")
+            }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_home, container, false)
-            ?.also { view -> initRootViewPadding(view) }
+            auth.observe(this@HomeFragment) {
+                Log.e("HomeFragment", "auth: $it")
+            }
+        }
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initView(view: View, savedInstanceState: Bundle?) {}
 
-        applicationTest.test()
-        activityTest.test()
-        viewTest.test()
+    override fun isInitialized(): Boolean = presenter.auth.value != null
+
+    override fun initLiveData(owner: LifecycleOwner) {
+        presenter.observeDynamicAuth()
     }
 
     //region DaggerFragment
 
     override fun inject(component: ViewComponent) {
-        Log.e("HomeFragment", "==================================================")
-        Log.e("HomeFragment", "application: ${activity?.application}")
-        Log.e("HomeFragment", "activity: $activity")
-        Log.e("HomeFragment", "fragment: $this")
         component.inject(this)
     }
 

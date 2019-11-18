@@ -65,14 +65,23 @@ dependencies {
     implementation libraries.androidx.navigation.fragment
     implementation libraries.androidx.navigation.ui
 
+    implementation libraries.androidx.lifecycle.common
+    implementation libraries.androidx.lifecycle.extensions
+
     implementation libraries.dagger2.core
     implementation libraries.dagger2.android
     implementation libraries.dagger2.androidx
     kapt libraries.dagger2.compiler
     kapt libraries.dagger2.processor
 
+    implementation libraries.rxjava2.core
+    implementation libraries.rxjava2.kotlin
+    implementation libraries.rxjava2.android
+
     testImplementation libraries.test.junit
 
     androidTestImplementation libraries.test.androidx.junit
     androidTestImplementation libraries.test.androidx.espresso
 }
+
+apply plugin: "com.google.gms.google-services"

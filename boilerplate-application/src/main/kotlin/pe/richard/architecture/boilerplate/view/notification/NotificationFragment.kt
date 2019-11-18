@@ -2,9 +2,8 @@ package pe.richard.architecture.boilerplate.view.notification
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import pe.richard.architecture.boilerplate.R
 import pe.richard.architecture.boilerplate.dagger.activity.test.IActivityTest
 import pe.richard.architecture.boilerplate.dagger.android.DaggerFragment
@@ -24,17 +23,19 @@ class NotificationFragment : DaggerFragment() {
     @Inject
     lateinit var viewTest: IViewTest
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_notification, container, false)
-            ?.also { view -> initRootViewPadding(view) }
+    override fun getRootViewId(): Int = R.layout.fragment_notification
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun observeLiveData(owner: LifecycleOwner) {}
 
+    override fun initView(view: View, savedInstanceState: Bundle?) {
         applicationTest.test()
         activityTest.test()
         viewTest.test()
     }
+
+    override fun isInitialized(): Boolean = false
+
+    override fun initLiveData(owner: LifecycleOwner) {}
 
     //region DaggerFragment
 

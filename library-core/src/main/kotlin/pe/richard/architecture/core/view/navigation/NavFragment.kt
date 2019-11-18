@@ -1,10 +1,10 @@
 package pe.richard.architecture.core.view.navigation
 
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavDestination
 import pe.richard.architecture.core.view.extensions.getBottomNavigationViewHeight
 import pe.richard.architecture.core.view.extensions.getNavigationBarHeight
+import pe.richard.architecture.core.view.request.RequestFragment
 
 /**
  * Navigation Fragment in NavActivity.
@@ -19,7 +19,7 @@ import pe.richard.architecture.core.view.extensions.getNavigationBarHeight
  * @see NavActivity
  * @see NavUI
  */
-open class NavFragment : Fragment() {
+open class NavFragment : RequestFragment() {
 
     val previousDestination: NavDestination?
         get() = (context as? NavActivity)?.previousDestination
