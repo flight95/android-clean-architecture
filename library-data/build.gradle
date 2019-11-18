@@ -64,6 +64,10 @@ dependencies {
     implementation libraries.dagger2.core
     kapt libraries.dagger2.compiler
 
+    implementation libraries.rxjava2.core
+    implementation libraries.rxjava2.kotlin
+    implementation libraries.rxjava2.android
+
     testImplementation libraries.test.junit
 
     androidTestImplementation libraries.test.androidx.junit

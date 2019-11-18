@@ -60,8 +60,15 @@ dependencies {
     implementation libraries.androidx.base.core
     implementation libraries.androidx.base.appcompat
 
+    implementation libraries.androidx.lifecycle.common
+    implementation libraries.androidx.lifecycle.extensions
+
     implementation libraries.dagger2.core
     kapt libraries.dagger2.compiler
+
+    implementation libraries.rxjava2.core
+    implementation libraries.rxjava2.kotlin
+    implementation libraries.rxjava2.android
 
     testImplementation libraries.test.junit
 

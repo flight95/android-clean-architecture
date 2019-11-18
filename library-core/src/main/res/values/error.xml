@@ -1,0 +1,20 @@
+<resources>
+    <string name="error_unknown">An error occurred.</string>
+    <string name="error_network">An internet connection is required.</string>
+    <string name="error_transform">The data cannot be converted.</string>
+    <string name="error_read">Could not get data.</string>
+    <string name="error_create">Could not create data.</string>
+    <string name="error_update">Could not update data.</string>
+    <string name="error_delete">Could not remove data.</string>
+
+    <string name="error_authentication_transform_email">Could not get email information.</string>
+    <string name="error_authentication_transform_family_name">Could not get family name information.</string>
+    <string name="error_authentication_transform_given_name">Could not get given name information.</string>
+
+    <string name="error_authentication_read_firebase">Could not sign in firebase authentication.</string>
+    <string name="error_authentication_read_google">Could not sign in google authentication.</string>
+    <string name="error_authentication_read_google_cancel">You have canceled login. please try again.</string>
+
+    <string name="error_authentication_delete_firebase">Could not sign out firebase authentication.</string>
+    <string name="error_authentication_delete_google">Could not sign out google authentication.</string>
+</resources>
