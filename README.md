@@ -221,6 +221,9 @@ See [Description](https://github.com/flight95/android-clean-architecture/blob/de
 ## Android DI from Dagger2
 See [Description](https://github.com/flight95/android-clean-architecture/blob/develop/DAGGER2.md) file.
 
+## Google and Firebase authentication.
+See [Description](https://github.com/flight95/android-clean-architecture/blob/develop/AUTH_GOOGLE_FIREBASE.md) file.
+
 ## Git Flow
 - Use the default Git Flow.
 ![Branches](http://woowabros.github.io/img/2017-10-30/git-flow_overall_graph.png)
