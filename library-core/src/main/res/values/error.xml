@@ -11,10 +11,37 @@
     <string name="error_authentication_transform_family_name">Could not get family name information.</string>
     <string name="error_authentication_transform_given_name">Could not get given name information.</string>
 
-    <string name="error_authentication_read_firebase">Could not sign in firebase authentication.</string>
-    <string name="error_authentication_read_google">Could not sign in google authentication.</string>
-    <string name="error_authentication_read_google_cancel">You have canceled login. please try again.</string>
+    <string name="error_authentication_get_firebase">Could not sign in firebase authentication.</string>
+    <string name="error_authentication_get_google">Could not sign in google authentication.</string>
+    <string name="error_authentication_get_google_cancel">You have canceled login. please try again.</string>
 
     <string name="error_authentication_delete_firebase">Could not sign out firebase authentication.</string>
     <string name="error_authentication_delete_google">Could not sign out google authentication.</string>
+
+    <string name="error_user_transform_identifier">Could not get user data for identifier.</string>
+    <string name="error_user_transform_email">Could not get user data for email.</string>
+    <string name="error_user_transform_created_at">Could not get user data for created date.</string>
+    <string name="error_user_transform_updated_at">Could not get user data for updated date.</string>
+    <string name="error_user_transform_deleted_at">Could not get user data for deleted date.</string>
+
+    <string name="error_user_observe_firestore">Could not observe user data.</string>
+    <string name="error_user_observe_firestore_none">Could not found user data.</string>
+
+    <string name="error_user_get_firestore">Could not get user data.</string>
+    <string name="error_user_get_firestore_my">Could not get my data.</string>
+    <string name="error_user_get_firestore_none">Could not found user data.</string>
+    <string name="error_user_get_firestore_my_none">Could not found my data.</string>
+    <string name="error_user_get_firestore_unique">Multiple user data exist.</string>
+    <string name="error_user_get_firestore_my_unique">Multiple my data exist.</string>
+
+    <string name="error_user_create_firestore">Could not create user data.</string>
+    <string name="error_user_create_firestore_my">Could not create my data.</string>
+
+    <string name="error_user_update_firestore">Could not update user data.</string>
+    <string name="error_user_update_firestore_my">Could not update my data.</string>
+
+    <string name="error_user_delete_firestore">Could not delete user data.</string>
+    <string name="error_user_delete_firestore_my">Could not delete my data.</string>
+    <string name="error_user_delete_firestore_identifier">Could not found user data for delete.</string>
+    <string name="error_user_delete_firestore_authentication">Could not delete authenticated user data.</string>
 </resources>

@@ -20,16 +20,6 @@ internal class FirebaseAuthRepository @Inject constructor(
     @Named("CacheFirebaseAuthDataSource") private val cache: AuthDataSource
 ) : AuthRepository {
 
-    override fun getSync(): Single<AuthData> =
-        when (application.isNetworkConnected()) {
-            true -> remote.get() // Case Google with Firebase api, it will be supported auto sync.
-            false -> ApplicationError.createSingle(AuthError.Network())
-        }
-
-    override fun getStatic(): Single<AuthData> =
-        cache.get()
-            .onErrorResumeNext { getSync() }
-
     override fun observeDynamic(): Flowable<AuthData> =
         getStatic()
             .flatMapPublisher {
@@ -40,6 +30,16 @@ internal class FirebaseAuthRepository @Inject constructor(
                     }
                 }
             }
+
+    override fun getSync(): Single<AuthData> =
+        when (application.isNetworkConnected()) {
+            true -> remote.get() // Case Google with Firebase api, it will be supported auto sync.
+            false -> ApplicationError.createSingle(AuthError.Network())
+        }
+
+    override fun getStatic(): Single<AuthData> =
+        cache.get()
+            .onErrorResumeNext { getSync() }
 
     override fun deleteCache(): Completable =
         cache.delete()

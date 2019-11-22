@@ -68,6 +68,10 @@ dependencies {
     implementation libraries.androidx.lifecycle.common
     implementation libraries.androidx.lifecycle.extensions
 
+    implementation libraries.firebase.auth
+    implementation libraries.firebase.firestore
+    implementation libraries.google.auth
+
     implementation libraries.dagger2.core
     implementation libraries.dagger2.android
     implementation libraries.dagger2.androidx

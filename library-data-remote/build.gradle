@@ -61,6 +61,7 @@ dependencies {
     implementation libraries.androidx.base.appcompat
 
     implementation libraries.firebase.auth
+    implementation libraries.firebase.firestore
     implementation libraries.google.auth
 
     implementation libraries.dagger2.core

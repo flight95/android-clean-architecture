@@ -19,11 +19,11 @@ abstract class FirebaseAuthDataSource : AuthDataSource {
             .create<FirebaseUser> { emitter ->
                 try {
                     when (val account = FirebaseAuth.getInstance().currentUser) {
-                        null -> emitter.onError(AuthError.ReadFirebase())
+                        null -> emitter.onError(AuthError.GetFirebase())
                         else -> emitter.onSuccess(account)
                     }
                 } catch (e: Throwable) {
-                    emitter.onError(AuthError.ReadFirebase(e))
+                    emitter.onError(AuthError.GetFirebase(e))
                 }
             }
             .subscribeOn(Schedulers.io())
@@ -42,7 +42,7 @@ abstract class FirebaseAuthDataSource : AuthDataSource {
                         )
                     )
                 } catch (e: Throwable) {
-                    emitter.onError(AuthError.ReadGoogleClient(e))
+                    emitter.onError(AuthError.GetGoogleClient(e))
                 }
             }
             .subscribeOn(Schedulers.io())

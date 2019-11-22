@@ -38,16 +38,16 @@ internal class RemoteFirebaseAuthDataSource @Inject constructor(
                         .addOnCompleteListener(activity) { task ->
                             when (task.isSuccessful) {
                                 true -> emitter.onSuccess(account)
-                                false -> emitter.onError(AuthError.ReadFirebase())
+                                false -> emitter.onError(AuthError.GetFirebase())
                             }
                         }
                 } catch (e: Throwable) {
-                    emitter.onError(AuthError.ReadFirebase(e))
+                    emitter.onError(AuthError.GetFirebase(e))
                 }
             }
             .observeOn(Schedulers.io())
             .flatMap(getFirebase()) { google, firebase -> Pair(firebase, google) }
-            .compose(RemoteFirebaseAuthMapper.SingleDataTransformer(From.Remote))
+            .compose(RemoteFirebaseAuthMapper.DataSingleTransformer(From.Remote))
 
     private fun getGoogle(): Single<GoogleSignInAccount> =
         getGoogleClient(activity, firebaseClientId)
@@ -62,26 +62,26 @@ internal class RemoteFirebaseAuthDataSource @Inject constructor(
                                         .getResult(ApiException::class.java)
                                         .let { account ->
                                             when (account) {
-                                                null -> emitter.onError(AuthError.ReadGoogle())
+                                                null -> emitter.onError(AuthError.GetGoogle())
                                                 else -> emitter.onSuccess(account)
                                             }
                                         }
                                 } catch (e: ApiException) {
                                     emitter.onError(
                                         when (e.statusCode) {
-                                            12501 -> AuthError.ReadGoogleCancel(e)
-                                            else -> AuthError.ReadGoogle(e)
+                                            12501 -> AuthError.GetGoogleCancel(e)
+                                            else -> AuthError.GetGoogle(e)
                                         }
                                     )
                                 } catch (e: Throwable) {
-                                    emitter.onError(AuthError.ReadGoogle(e))
+                                    emitter.onError(AuthError.GetGoogle(e))
                                 }
                             }
                         }
-                        else -> emitter.onError(AuthError.ReadGoogle())
+                        else -> emitter.onError(AuthError.GetGoogle())
                     }
                 } catch (e: Throwable) {
-                    emitter.onError(AuthError.ReadGoogle(e))
+                    emitter.onError(AuthError.GetGoogle(e))
                 }
             }
             .observeOn(Schedulers.io())
