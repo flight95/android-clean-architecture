@@ -1,8 +1,7 @@
 # Dagger2
+[![Library: Dagger2](https://img.shields.io/badge/Library-Dagger2-orange.svg)](https://dagger.dev)
 >Dagger is a fully static, compile-time dependency injection framework for both Java and Android.
 It is an adaptation of an earlier version created by Square and now maintained by Google.
-
-[![Library: Dagger2](https://img.shields.io/badge/Library-Dagger2-orange.svg)](https://dagger.dev)
 
 ## Why DI?
 > In software engineering, dependency injection is a technique whereby one object supplies the dependencies of another object.
