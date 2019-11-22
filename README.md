@@ -216,16 +216,16 @@ fun observeDynamicData(id: String): Flowable<Data> =
 ```
 
 ## Android Navigation Architecture and Material Theme
-See [Description](https://github.com/flight95/android-clean-architecture/blob/develop/NAVIGATION_MATERIAL.md) file.
+See [Description](NAVIGATION_MATERIAL.md) file.
 
 ## Android DI from Dagger2
-See [Description](https://github.com/flight95/android-clean-architecture/blob/develop/DAGGER2.md) file.
+See [Description](DAGGER2.md) file.
 
 ## Google and Firebase authentication.
-See [Description](https://github.com/flight95/android-clean-architecture/blob/develop/AUTH_GOOGLE_FIREBASE.md) file.
+See [Description](AUTH_GOOGLE_FIREBASE.md) file.
 
 ## Using Firebase Firestore.
-See [Description](https://github.com/flight95/android-clean-architecture/blob/feature-firestore/FIRESTORE.md) file.
+See [Description](FIRESTORE.md) file.
 
 ## Git Flow
 - Use the default Git Flow.
