@@ -5,7 +5,7 @@ import pe.richard.architecture.data.core.auth.firebase.FirebaseAuthMapper
 
 internal object RemoteFirebaseAuthMapper {
 
-    internal class SingleDataTransformer(from: From) :
-        FirebaseAuthMapper.SingleDataTransformer(from)
+    internal class DataSingleTransformer(from: From) :
+        FirebaseAuthMapper.DataSingleTransformer(from)
 
 }

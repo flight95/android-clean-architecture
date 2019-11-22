@@ -26,15 +26,16 @@ open class ApplicationError(
 
     }
 
-    enum class Service(value: Int) {
+    enum class Service {
 
         //region TODO: If you want to add another service, you have to add it here.
 
-        Auth(1);
+        Auth,
+        User;
 
         //endregion
 
-        val code = value * 100000
+        val code = (ordinal + 1) * 100000
 
     }
 
@@ -42,7 +43,7 @@ open class ApplicationError(
         Unknown,
         Network,
         Transform,
-        Read,
+        Get,
         Create,
         Update,
         Delete;
@@ -53,7 +54,7 @@ open class ApplicationError(
                     Unknown -> R.string.error_unknown
                     Network -> R.string.error_network
                     Transform -> R.string.error_transform
-                    Read -> R.string.error_read
+                    Get -> R.string.error_read
                     Create -> R.string.error_create
                     Update -> R.string.error_update
                     Delete -> R.string.error_delete
@@ -65,7 +66,7 @@ open class ApplicationError(
                     Unknown -> 1
                     Network -> 200
                     Transform -> 300
-                    Read -> 400
+                    Get -> 400
                     Create -> 500
                     Update -> 600
                     Delete -> 700

@@ -23,6 +23,7 @@ androidx.lifecycle = lifecycle
 
 def firebase = [:]
 firebase.auth = "com.google.firebase:firebase-auth:$versions.firebase.auth"
+firebase.firestore = "com.google.firebase:firebase-firestore-ktx:$versions.firebase.firestore"
 libraries.firebase = firebase
 
 def google = [:]

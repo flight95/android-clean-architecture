@@ -24,18 +24,18 @@ internal class CacheFirebaseAuthDataSource @Inject constructor(
         getFirebase()
             .observeOn(Schedulers.io())
             .flatMap(getGoogle()) { firebase, google -> Pair(firebase, google) }
-            .compose(CacheFirebaseAuthMapper.SingleDataTransformer(From.Cache))
+            .compose(CacheFirebaseAuthMapper.DataSingleTransformer(From.Cache))
 
     private fun getGoogle(): Single<GoogleSignInAccount> =
         Single
             .create<GoogleSignInAccount> { emitter ->
                 try {
                     when (val account = GoogleSignIn.getLastSignedInAccount(activity)) {
-                        null -> emitter.onError(AuthError.ReadGoogle())
+                        null -> emitter.onError(AuthError.GetGoogle())
                         else -> emitter.onSuccess(account)
                     }
                 } catch (e: Throwable) {
-                    emitter.onError(AuthError.ReadGoogle(e))
+                    emitter.onError(AuthError.GetGoogle(e))
                 }
             }
             .subscribeOn(Schedulers.io())

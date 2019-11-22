@@ -28,8 +28,10 @@ versions.androidx = androidx
 
 // https://firebase.google.com/support/release-notes/android
 // - auth
+// - firestore
 def firebase = [:]
 firebase.auth = "19.1.0"
+firebase.firestore = "21.3.0"
 versions.firebase = firebase
 
 // https://developers.google.com/android/guides/releases
