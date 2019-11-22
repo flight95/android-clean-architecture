@@ -1,4 +1,6 @@
 # Google and Firebase authentication.
+[![Google: Auth](https://img.shields.io/badge/Google-Auth-yellow.svg)](https://developers.google.com/identity/protocols/OAuth2)
+[![Firebase: Auth](https://img.shields.io/badge/Firebase-Auth-yellow.svg)](https://firebase.google.com/products/auth/)
 > [Google Sign-in](https://developers.google.com/identity/sign-in/android/sign-in) with [Firebase](https://firebase.google.com/docs/auth/android/google-signin) will be used Google API and Firebase API.
 
 ## Firebase
@@ -149,6 +151,7 @@ when (fragment) {
 ```
 
 ## With Rx
+[![Library: Rx2](https://img.shields.io/badge/Library-Rx2-orange.svg)](https://reactivex.io)
 > For Stateless, We will be used to Rx.
 
 ```kotlin
